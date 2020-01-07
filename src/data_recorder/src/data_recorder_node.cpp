@@ -51,7 +51,7 @@ int main(int argc, char** argv)
 DataRecorder::DataRecorder() :
 	linear_(1), angular_(3)
 {
-	std::string record_filename = "training_data/training_data.csv";
+	std::string record_filename = "/home/ubuntu/training_data/training_data.csv";
 	std::string raspicam = "raspicam_node/image/compressed";
 	std::string joy = "joy";
 
@@ -81,7 +81,7 @@ void DataRecorder::camera_callback(const sensor_msgs::CompressedImageConstPtr& i
 	milliseconds ms = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
 	std::string img_name = "screenshot_" + std::to_string(ms.count()) + ".jpg";
 
-	imwrite("training_data/" + img_name, resized_cv_img);
+	imwrite("/home/ubuntu/training_data/" + img_name, resized_cv_img);
 	record_file << img_name + "," 
 		+ std::to_string(steering_angle_) + "," 
 		+ std::to_string(throttle_) + "\n";
